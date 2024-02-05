@@ -15,10 +15,10 @@ from sales_rest.models import AutomobileVO
 def get_automobile():
     response = requests.get("http://inventory-api:8000/api/automobiles/")
     content = json.loads(response.content)
-
+    print("INSIDE FUNCTION")
     [AutomobileVO.objects.update_or_create(
-        VIN = automobile["VIN"],
-        sold = automobile["sold"],
+        VIN=automobile["vin"],
+        sold=automobile["sold"],
         ) for automobile in content["autos"]]
 
 
