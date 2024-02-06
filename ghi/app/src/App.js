@@ -5,6 +5,8 @@ import AddSalesperson from './AddSalesperson';
 import ListSalespeople from './ListSalespeople';
 import AddCustomer from './AddCustomer';
 import ListCustomers from './ListCustomers';
+import TechList from './TechList';
+import TechForm from './TechForm';
 
 function App() {
   return (
@@ -17,6 +19,10 @@ function App() {
           <Route path="salespeople/add/" element={<AddSalesperson />} />
           <Route path="customers/" element={<ListCustomers />} />
           <Route path="customers/add/" element={<AddCustomer />} />
+          <Route path="technicians" >
+            <Route path="" element={<TechList />} />
+            <Route path="add" element={<TechForm />} />
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>
