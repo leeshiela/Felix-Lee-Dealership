@@ -41,3 +41,6 @@ class Sale(models.Model):
         related_name="sale",
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return f"{self.automobile.vin}: price {self.price}"

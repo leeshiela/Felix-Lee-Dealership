@@ -139,7 +139,7 @@ def api_sales_list(request):
                 {"message": "Invalid salesperson id"},
                 status=400,
             )
-        content["automobile"]["sold"].update(True)
+
         sale = Sale.objects.create(**content)
         return JsonResponse(
             sale,
