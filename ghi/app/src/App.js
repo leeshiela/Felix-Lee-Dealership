@@ -10,6 +10,7 @@ import ListSales from './ListSales';
 import SalesHistory from './SalespersonHistory';
 import TechList from './TechList';
 import TechForm from './TechForm';
+import ListManufacturers from './ListManufacturers';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="manufacturers/" element={<ListManufacturers />} />
           <Route path="salespeople/" element={<ListSalespeople />} />
           <Route path="salespeople/create/" element={<AddSalesperson />} />
           <Route path="sales/create/" element={<AddSale />} />
