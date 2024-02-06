@@ -4,6 +4,7 @@ from django.views.decorators.http import require_http_methods
 import json
 from common.json import ModelEncoder
 from django.http import JsonResponse
+import requests
 
 class AutomobileVOListEncoder(ModelEncoder):
     model = AutomobileVO
@@ -139,8 +140,16 @@ def api_sales_list(request):
                 {"message": "Invalid salesperson id"},
                 status=400,
             )
-
-        # Update Status of Sold HERE (Try Block), Need to import requests, make another request, put will update the sold
+        try:
+            url = f"http://inventory-api:8000/api/automobiles/{vin}/"
+            response = requests.put(url, json={"sold": True})
+            if response.status_code != 200:
+               raise KeyError
+        except (KeyError):
+            return JsonResponse(
+                {"message": "Sold not updated"},
+                status= 400,
+            )
 
         sale = Sale.objects.create(**content)
         return JsonResponse(
