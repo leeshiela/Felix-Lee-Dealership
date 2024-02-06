@@ -9,6 +9,7 @@ function Nav() {
         <NavLink className="navbar-brand" to="/salespeople/add/">Add a Salesperson</NavLink>
         <NavLink className="navbar-brand" to="/sales/add/">Add a Sale</NavLink>
         <NavLink className="navbar-brand" to="/sales/">Sales</NavLink>
+        <NavLink className="navbar-brand" to="/sales/history/">Salesperson History</NavLink>
         <NavLink className="navbar-brand" to="/customers/">Customers</NavLink>
         <NavLink className="navbar-brand" to="/customers/add/">Add a customer</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
