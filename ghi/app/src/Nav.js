@@ -6,6 +6,7 @@ function Nav() {
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">CarCar</NavLink>
         <NavLink className="navbar-brand" to="/manufacturers/">Manufacturers</NavLink>
+        <NavLink className="navbar-brand" to="/manufacturers/create/">Add a Manufacturer</NavLink>
         <NavLink className="navbar-brand" to="/salespeople/">Salespeople</NavLink>
         <NavLink className="navbar-brand" to="/salespeople/create/">Add a Salesperson</NavLink>
         <NavLink className="navbar-brand" to="/sales/create/">Add a Sale</NavLink>
