@@ -14,7 +14,7 @@ function ListSalespeople(){
     }
 
     const handleDelete = async (event) => {
-        const id = event.target.dataset.employee_id
+        const id = event.target.dataset.id
 
         const fetchOptions = { method: "DELETE"}
         const request = await fetch(`http://localhost:8090/api/salespeople/${id}/`, fetchOptions)

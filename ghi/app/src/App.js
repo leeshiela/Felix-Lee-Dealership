@@ -4,6 +4,7 @@ import Nav from './Nav';
 import AddSalesperson from './AddSalesperson';
 import ListSalespeople from './ListSalespeople';
 import AddCustomer from './AddCustomer';
+import ListCustomers from './ListCustomers';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="salespeople/" element={<ListSalespeople />} />
           <Route path="salespeople/add/" element={<AddSalesperson />} />
+          <Route path="customers/" element={<ListCustomers />} />
           <Route path="customers/add/" element={<AddCustomer />} />
         </Routes>
       </div>
