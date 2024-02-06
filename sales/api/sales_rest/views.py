@@ -140,6 +140,8 @@ def api_sales_list(request):
                 status=400,
             )
 
+        # Update Status of Sold HERE (Try Block), Need to import requests, make another request, put will update the sold
+
         sale = Sale.objects.create(**content)
         return JsonResponse(
             sale,
