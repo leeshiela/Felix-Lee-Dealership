@@ -17,7 +17,7 @@ def get_automobile():
     content = json.loads(response.content)
     [AutomobileVO.objects.update_or_create(
         vin=automobile["vin"],
-        sold=automobile["sold"],
+        defaults={"sold": automobile["sold"]},
         ) for automobile in content["autos"]]
 
 
