@@ -7,6 +7,7 @@ import AddCustomer from './AddCustomer';
 import ListCustomers from './ListCustomers';
 import AddSale from './AddSale';
 import ListSales from './ListSales';
+import SalesHistory from './SalespersonHistory';
 import TechList from './TechList';
 import TechForm from './TechForm';
 
@@ -18,14 +19,15 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="salespeople/" element={<ListSalespeople />} />
-          <Route path="salespeople/add/" element={<AddSalesperson />} />
-          <Route path="sales/add/" element={<AddSale />} />
+          <Route path="salespeople/create/" element={<AddSalesperson />} />
+          <Route path="sales/create/" element={<AddSale />} />
           <Route path="sales/" element={<ListSales />} />
+          <Route path="sales/history/" element={<SalesHistory />} />
           <Route path="customers/" element={<ListCustomers />} />
-          <Route path="customers/add/" element={<AddCustomer />} />
+          <Route path="customers/create/" element={<AddCustomer />} />
           <Route path="technicians" >
             <Route path="" element={<TechList />} />
-            <Route path="add" element={<TechForm />} />
+            <Route path="create" element={<TechForm />} />
           </Route>
         </Routes>
       </div>
