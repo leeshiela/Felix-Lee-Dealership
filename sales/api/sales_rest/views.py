@@ -140,13 +140,9 @@ def api_sales_list(request):
                 {"message": "Invalid salesperson id"},
                 status=400,
             )
-
-        # Update Status of Sold HERE (Try Block), Need to import requests, make another request, put will update the sold
         try:
             url = f"http://inventory-api:8000/api/automobiles/{vin}/"
             response = requests.put(url, json={"sold": True})
-            print(response.text)
-            print(automobile.vin, response.status_code)
             if response.status_code != 200:
                raise KeyError
         except (KeyError):
