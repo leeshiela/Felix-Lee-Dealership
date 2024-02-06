@@ -16,7 +16,7 @@ class Customer(models.Model):
     phone_number = models.PositiveIntegerField()
 
 class Sale(models.Model):
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    price = models.PositiveIntegerField()
     automobile = models.ForeignKey(
         AutomobileVO,
         related_name="sale",
