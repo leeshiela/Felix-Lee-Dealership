@@ -8,12 +8,16 @@ import ListCustomers from './ListCustomers';
 import AddSale from './AddSale';
 import ListSales from './ListSales';
 import SalesHistory from './SalespersonHistory';
-import TechList from './TechList';
-import TechForm from './TechForm';
 import ListManufacturers from './ListManufacturers';
 import AddManufacturer from './AddManufacturer';
 import ListVehicleModels from './ListVehicleModels';
 import AddVehicleModel from './AddVehicleModel';
+import ListTechnicians from './ListTechnicians';
+import AddTechnician from './AddTechnician';
+import ListAppointments from './ListAppointments';
+import AddAppointment from './AddAppointment';
+import ServiceHistory from './ServiceHistory';
+
 
 function App() {
   return (
@@ -34,8 +38,13 @@ function App() {
           <Route path="customers/" element={<ListCustomers />} />
           <Route path="customers/create/" element={<AddCustomer />} />
           <Route path="technicians" >
-            <Route path="" element={<TechList />} />
-            <Route path="create" element={<TechForm />} />
+            <Route path="" element={<ListTechnicians />} />
+            <Route path="create" element={<AddTechnician />} />
+          </Route>
+          <Route path="appointments" >
+            <Route path="" element={<ListAppointments />} />
+            <Route path="create" element={<AddAppointment />} />
+            <Route path="history" element={<ServiceHistory />} />
           </Route>
         </Routes>
       </div>
