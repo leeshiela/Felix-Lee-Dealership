@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-function TechList() {
+function ListTechnicians() {
     const [techs, setTechs] = useState([]);
 
     const fetchData = async () => {
@@ -44,4 +44,4 @@ function TechList() {
     </div>);
 }
 
-export default TechList;
+export default ListTechnicians;

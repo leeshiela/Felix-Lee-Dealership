@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-function AppointmentList() {
+function ListAppointments() {
     const [appmts, setAppmts] = useState([]);
     const [autos, setAutos] = useState([]);
 
@@ -77,4 +77,4 @@ function AppointmentList() {
     </div>);
 }
 
-export default AppointmentList;
+export default ListAppointments;
