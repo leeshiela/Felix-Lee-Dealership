@@ -185,4 +185,4 @@ def api_sale_delete(request, pk):
             count, _ = Sale.objects.filter(id=pk).delete()
             return JsonResponse({"deleted": count > 0})
     except Sale.DoesNotExist:
-        return JsonResponse({"message": "Sale does not exist."}, status_code=404)
+        return JsonResponse({"message": "Sale does not exist."}, status=404)
