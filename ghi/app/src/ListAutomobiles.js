@@ -3,18 +3,17 @@ import { useState, useEffect } from "react";
 function ListAutomobiles() {
     const [automobiles, setAutomobiles] = useState([]);
 
-    const getData = async () => {
-        const response = await fetch()
+    const fetchData = async () => {
+        const url = "http://localhost:8100/api/automobiles/"
+        const response = await fetch(url)
         if (response.ok) {
-            const { automobiles } = await response.json();
-            setAutomobiles(automobiles);
-        } else {
-            console.error("Error occured while fetching automobiles data")
+            const data = await response.json();
+            setAutomobiles(data.autos);
         }
     }
 
-    useEffect(()=>{
-        getData()
+    useEffect(() => {
+        fetchData();
     }, []);
 
     return(
@@ -38,15 +37,15 @@ function ListAutomobiles() {
                             <td>{automobile.vin}</td>
                             <td>{automobile.color}</td>
                             <td>{automobile.year}</td>
-                            <td>{automobile.model}</td>
-                            <td>{automobile.manufacturer}</td>
-                            <td>{automobile.sold}</td>
+                            <td>{automobile.model.name}</td>
+                            <td>{automobile.model.manufacturer.name}</td>
+                            <td>{automobile.sold ? "Yes" : "No"}</td>
                         </tr>
                     );
                 })}
             </tbody>
         </table>
-        </div>
+    </div>
     );
 }
 

@@ -18,7 +18,6 @@ import ListAppointments from './ListAppointments';
 import AddAppointment from './AddAppointment';
 import ServiceHistory from './ServiceHistory';
 import ListAutomobiles from './ListAutomobiles';
-import AddAutomobiles from './AddAutomobile';
 
 
 function App() {
@@ -33,7 +32,6 @@ function App() {
           <Route path="models/" element={<ListVehicleModels />} />
           <Route path="models/create/" element={<AddVehicleModel />} />
           <Route path="automobiles" element={<ListAutomobiles />} />
-          <Route path="automobiles/create/" element={<AddAutomobiles />} />
           <Route path="salespeople/" element={<ListSalespeople />} />
           <Route path="salespeople/create/" element={<AddSalesperson />} />
           <Route path="sales/create/" element={<AddSale />} />
