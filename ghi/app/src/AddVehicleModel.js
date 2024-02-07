@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function AddVehicleModel() {
+    const [success, setSuccess] = useState(false);
     const [manufacturers, setManufacturers] = useState([]);
     const [formData, setFormData] = useState({
         name: "",
@@ -36,6 +37,7 @@ function AddVehicleModel() {
         console.log(response)
         console.log("fetch", fetchConfig)
         if (response.ok) {
+            setSuccess(true);
             setFormData({
                 name: "",
                 picture_url: "",
@@ -63,6 +65,13 @@ function AddVehicleModel() {
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">
                         <h1>Add a Vehicle Model</h1>
+                        {success ?
+                            <div className="alert alert-success d-flex align-items-center" role="alert">
+                                <div>
+                                Success: Created a new vehicle model!
+                                </div>
+                            </div>:''
+                        }
                         <form onSubmit={handleSubmit} id="add-vehicleModel-form">
 
                             <div className="form-floating mb-3">
