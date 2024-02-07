@@ -18,6 +18,7 @@ import AddAppointment from './AddAppointment';
 import ServiceHistory from './ServiceHistory';
 import ListAutomobiles from './ListAutomobiles';
 import ListModels from './ListModels';
+import AddAutoMobile from './AddAutoMobile';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
             <Route path="create" element={<AddAppointment />} />
             <Route path="history" element={<ServiceHistory />} />
           </Route>
+          <Route path="automobiles/create/" element={<AddAutoMobile />} />
         </Routes>
       </div>
     </BrowserRouter>
