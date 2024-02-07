@@ -26,8 +26,8 @@ docker-compose up
 
 - View the project in the browser: http://localhost:3000/
 
-![Img](/images/.png)
-![Img](/images/.png)
+![Img](/resources/.png)
+![Img](/resources/.png)
 
 ## Design
 CarCar is made up of 3 microservices which interact with one another.
