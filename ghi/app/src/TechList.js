@@ -19,7 +19,7 @@ function TechList() {
     }, []);
 
     return (
-    <div>
+    <div className="my-5">
         <h1>List of Technicians</h1>
         <table className="table table-striped">
             <thead>
