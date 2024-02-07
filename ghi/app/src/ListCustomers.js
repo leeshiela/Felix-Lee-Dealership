@@ -13,16 +13,6 @@ function ListCustomers(){
         }
     }
 
-    const handleDelete = async (event) => {
-        const id = event.target.dataset.id
-
-        const fetchOptions = { method: "DELETE"}
-        const request = await fetch(`http://localhost:8090/api/customers/${id}/`, fetchOptions)
-        if (request.ok) {
-            getData()
-        }
-    }
-
     useEffect(()=>{
         getData()
     }, []);
@@ -38,7 +28,6 @@ function ListCustomers(){
                         <th>Last Name</th>
                         <th>Phone Number</th>
                         <th>Address</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,7 +38,6 @@ function ListCustomers(){
                                 <td>{customer.last_name}</td>
                                 <td>{customer.phone_number}</td>
                                 <td>{customer.address}</td>
-                                <td><button data-id={customer.id} onClick={handleDelete} className="btn btn-danger">Delete</button></td>
                             </tr>
                         )
                     })}
