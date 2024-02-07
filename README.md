@@ -40,7 +40,7 @@ CarCar is made up of 3 microservices which interact with one another.
 
 ## Accessing Endpoints to Send and View Data: Access Through Insomnia & Your Browser
 
-#### Service microservice
+### Service microservice
 Action | Method | URL
 | ------ | ------ | ------ |
 List technicians | GET | http://localhost:8080/api/technicians/
@@ -103,7 +103,7 @@ A special type of employee that works on assigned service appointments.
 
 The aggregate of this microservice. These represent all the important data to track for any and all service appointments at this dealership.
 
-#### Sales microservice
+### Sales microservice
 Action | Method | URL
 | ------ | ------ | ------ |
 List salespeople | GET | http://localhost:8090/api/salespeople/
@@ -213,7 +213,7 @@ The Salesperson model has attributes of an employee id, which we assigned to be 
 
 
 
-#### Service microservice
+### Inventory microservice
 Action | Method | URL
 | ------ | ------ | ------ |
 List manufacturers | GET | http://localhost:8100/api/manufacturers/
