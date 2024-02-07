@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const statuses = ['Pending', 'Finished', 'Canceled']
+const statuses = ['Created', 'Finished', 'Canceled']
 
 function ServiceHistory() {
     const [appmts, setAppmts] = useState([]);
