@@ -40,7 +40,7 @@ CarCar is made up of 3 microservices which interact with one another.
 
 ## Accessing Endpoints to Send and View Data: Access Through Insomnia & Your Browser
 
-## Service microservice
+#### Service microservice
 Action | Method | URL
 | ------ | ------ | ------ |
 List technicians | GET | http://localhost:8080/api/technicians/
@@ -49,16 +49,60 @@ Delete a specific technician | DELETE | http://localhost:8080/api/technicians/:i
 List appointments | GET | http://localhost:8080/api/appointments/
 Create an appointment | POST | http://localhost:8080/api/appointments/
 Delete an appointment | DELETE | http://localhost:8080/api/appointments/:id/
-Set appointment status to "canceled" | PUT | http://localhost:8080/api/appointments/:id/cancel/
-Set appointment status to "finished" | PUT | http://localhost:8080/api/appointments/:id/finish/
+Set appointment status to "canceled" or "finished" | PUT | http://localhost:8080/api/appointments/:id/:action/
+
 
 JSON Body to input into Insomnia:
-(Elian input)
+
+Create a Technician:
+
+```
+{
+	"employee_id": 4,
+	"first_name": "test",
+	"last_name": "subject"
+}
+```
+
+Create a Service Appointment:
+
+```
+{
+	"vin": "JT4VN13G6S5150447",
+	"customer": "some test costumer",
+	"date_time": "2024-03-06T13:59:48.492Z",
+	"status": 0,
+	"technician": 4,
+	"reason": "scheduled maintenance"
+}
+```
 
 On the backend, the services microservice has 3 models: AutomobileVO, Appointment, and Technician.
-(Elian input)
 
-## Sales microservice
+> - AutoMobileVO:
+>     - VIN number: string primary key
+>     - sold: boolean
+
+
+> - Technician:
+>     - employee_id: integer primary key (auto_increment) 
+>     - first_name: string
+>     - last_name: string
+
+
+
+> - Appointment:
+>	  - id: integer primary key (auto_increment)
+>     - costumer: string
+>     - reason: string
+>     - status: enum(created, finished, canceled)
+>     - date_time: date_time encoded string
+>     - technician: Technician foreign key object
+
+
+
+
+#### Sales microservice
 Action | Method | URL
 | ------ | ------ | ------ |
 List salespeople | GET | http://localhost:8090/api/salespeople/
