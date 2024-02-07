@@ -97,7 +97,7 @@ def list_appointments(request):
                 safe=False,
             )
         except:
-            return JsonResponse({"message": "Could not create"}, status_code=400)
+            return JsonResponse({"message": "Could not create"}, status=400)
 
 
 @require_http_methods(['PUT', 'DELETE'])
