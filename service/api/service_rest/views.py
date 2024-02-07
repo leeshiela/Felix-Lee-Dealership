@@ -23,6 +23,7 @@ class ListTechnicianEncoder(ModelEncoder):
 class ListAppointmentEncoder(ModelEncoder):
     model = Appointment
     properties = [
+        'id',
         "vin",
         "customer",
         "date_time",
