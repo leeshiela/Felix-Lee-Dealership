@@ -265,7 +265,7 @@ Create an Automobile:
 }
 ```
 
-On the backend, the services microservice has 3 models: AutomobileVO, Appointment, and Technician.
+On the backend, the Inventory microservice has 3 models: Manufacturer, VehicleModel, and Automobile.
 
 > - Manufacturer:
 >     - id: integer primary key (auto_increment) 
