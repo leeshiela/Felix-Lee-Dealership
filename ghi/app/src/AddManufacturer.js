@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function AddManufacturer() {
+    const [success, setSuccess] = useState(false);
     const [manufacturerName, setManufacturerName] = useState("");
 
     const handleSubmit = async (event) => {
@@ -19,6 +20,7 @@ function AddManufacturer() {
 
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
+            setSuccess(true);
             setManufacturerName("");
         };
     }
@@ -34,6 +36,13 @@ function AddManufacturer() {
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">
                         <h1>Add a Manufacturer</h1>
+                        {success ?
+                            <div className="alert alert-success d-flex align-items-center" role="alert">
+                                <div>
+                                Success: Created a new Manufacturer!
+                                </div>
+                            </div>:''
+                        }
                         <form onSubmit={handleSubmit} id="add-manufacturer-form">
 
                             <div className="form-floating mb-3">

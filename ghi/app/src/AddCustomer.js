@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function AddCustomer() {
+    const [success, setSuccess] = useState(false);
     const [formData, setFormData] = useState({
         first_name: "",
         last_name: "",
@@ -23,6 +24,7 @@ function AddCustomer() {
 
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
+            setSuccess(true);
             setFormData({
                 first_name: "",
                 last_name: "",
@@ -47,6 +49,13 @@ function AddCustomer() {
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">
                         <h1>Add a Customer</h1>
+                        {success ?
+                            <div className="alert alert-success d-flex align-items-center" role="alert">
+                                <div>
+                                Success: Created a new Customer!
+                                </div>
+                            </div>:''
+                        }
                         <form onSubmit={handleSubmit} id="add-customer-form">
 
                             <div className="form-floating mb-3">
