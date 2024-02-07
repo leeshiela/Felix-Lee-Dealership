@@ -5,7 +5,7 @@ function AddVehicleModel() {
     const [formData, setFormData] = useState({
         name: "",
         picture_url: "",
-        manufacturer: "",
+        manufacturer_id: "",
     });
 
     const getData = async () => {
@@ -76,7 +76,7 @@ function AddVehicleModel() {
                             </div>
 
                             <div className="mb-3">
-                                <select onChange={handleFormChange} value={formData.manufacturer} required name="manufacturer" id="manufacturer" className="form-select">
+                                <select onChange={handleFormChange} value={formData.manufacturer} required name="manufacturer_id" id="manufacturer" className="form-select">
                                     <option value="">Manufacturer</option>
                                     {manufacturers.map(manufacturer => {
                                     return (
