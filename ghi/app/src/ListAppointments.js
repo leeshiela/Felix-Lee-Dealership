@@ -28,8 +28,6 @@ function ListAppointments() {
         }
         const response = await fetch(updateUrl, options);
         if (response.ok) {
-            const data = await response.json();
-            console.log(data);
             setAppmts(appmts.filter(a => a.id !== id));
         }
     }

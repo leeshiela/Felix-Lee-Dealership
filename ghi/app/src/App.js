@@ -27,18 +27,31 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="manufacturers/" element={<ListManufacturers />} />
-          <Route path="manufacturers/create/" element={<AddManufacturer />} />
-          <Route path="models/" element={<ListModels />} />
-          <Route path="models/create/" element={<AddVehicleModel />} />
-          <Route path="automobiles" element={<ListAutomobiles />} />
-          <Route path="salespeople/" element={<ListSalespeople />} />
-          <Route path="salespeople/create/" element={<AddSalesperson />} />
-          <Route path="sales/create/" element={<AddSale />} />
-          <Route path="sales/" element={<ListSales />} />
-          <Route path="sales/history/" element={<SalesHistory />} />
-          <Route path="customers/" element={<ListCustomers />} />
-          <Route path="customers/create/" element={<AddCustomer />} />
+          <Route path="manufacturers" >
+            <Route path="" element={<ListManufacturers />} />
+            <Route path="create" element={<AddManufacturer />} />
+          </Route>
+          <Route path="models" >
+            <Route path="" element={<ListModels />} />
+            <Route path="create" element={<AddVehicleModel />} />
+          </Route>
+          <Route path="automobiles" >
+            <Route path="" element={<ListAutomobiles />} />
+            <Route path="create" element={<AddAutoMobile />} />
+          </Route>
+          <Route path="salespeople" >
+            <Route path="" element={<ListSalespeople />} />
+            <Route path="create" element={<AddSalesperson />} />
+          </Route>
+          <Route path="sales" >
+            <Route path="" element={<ListSales />} />
+            <Route path="create" element={<AddSale />} />
+            <Route path="history" element={<SalesHistory />} />
+          </Route>
+          <Route path="customers" >
+            <Route path="" element={<ListCustomers />} />
+            <Route path="create" element={<AddCustomer />} />
+          </Route>
           <Route path="technicians" >
             <Route path="" element={<ListTechnicians />} />
             <Route path="create" element={<AddTechnician />} />
@@ -48,7 +61,6 @@ function App() {
             <Route path="create" element={<AddAppointment />} />
             <Route path="history" element={<ServiceHistory />} />
           </Route>
-          <Route path="automobiles/create/" element={<AddAutoMobile />} />
         </Routes>
       </div>
     </BrowserRouter>

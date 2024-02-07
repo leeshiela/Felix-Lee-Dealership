@@ -30,7 +30,6 @@ function AddTechnician() {
         const response = await fetch(hatUrl, fetchConfig);
         if (response.ok) {
             const newTech = await response.json();
-            console.log(newTech);
             setSuccess(true);
             setTech({
                 employee_id: '',

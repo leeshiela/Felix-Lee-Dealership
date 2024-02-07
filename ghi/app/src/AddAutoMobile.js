@@ -32,7 +32,6 @@ function AddAutoMobile() {
         const response = await fetch(autoUrl, fetchConfig);
         if (response.ok) {
             const newAuto = await response.json();
-            console.log(newAuto);
             setSuccess(true);
             setAuto({
                 color: '',
