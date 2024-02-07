@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function AppointmentForm() {
+function AddAppointment() {
     const [technicians, setTechnicians] = useState([]);
 
     const [success, setSuccess] = useState(false);
@@ -114,5 +114,5 @@ function AppointmentForm() {
     );
 }
 
-export default AppointmentForm;
+export default AddAppointment;
 

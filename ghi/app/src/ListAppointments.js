@@ -1,35 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-function DeleteDialog({hat, hats, setHats}) {
-    const [delPress, setDelPress] = useState(false);
-
-    async function deleteHat() {
-        console.log(`deleting hat with reference ${hat.href}`);
-        const hatUrl = `http://localhost:8090${hat.href}`;
-        const options = {
-            method: "delete"
-        }
-        const response = await fetch(hatUrl, options);
-        if (response.ok) {
-            const data = await response.json();
-            console.log(data);
-            setDelPress(false);
-            setHats(hats.filter(h => h !== hat));
-        }
-    }
-
-    return (
-        delPress
-        ? <div className="container mx-auto">
-            <div>Are you sure?</div>
-            <button onClick={deleteHat} className="me-1 btn btn-danger">YES</button>
-            <button onClick={() => setDelPress(false)} className="btn btn-primary">noo...</button>
-          </div>
-        : <button onClick={() => setDelPress(true)} className="btn btn-danger">Delete</button>
-    )
-}
-
-function AppointmentList() {
+function ListAppointments() {
     const [appmts, setAppmts] = useState([]);
     const [autos, setAutos] = useState([]);
 
@@ -40,11 +11,13 @@ function AppointmentList() {
         const appmtsResp = await fetch(appmtsUrl);
         const autosResp = await fetch(autosUrl);
 
-        if (appmtsResp.ok) {
+        if (appmtsResp.ok && autosResp.ok) {
             const appmtsData = await appmtsResp.json();
             setAppmts(appmtsData.appointments);
             const autosData = await autosResp.json();
-            setAutos(autosData.autos);
+            setAutos(autosData.autos.filter(a => a.sold).map(a => a.vin));
+        } else {
+            console.log('Some error while fetching data');
         }
     }
 
@@ -66,7 +39,7 @@ function AppointmentList() {
     }, []);
 
     return (
-    <div>
+    <div className="my-5">
         <h1>List of Appointments</h1>
         <table className="table table-striped">
             <thead>
@@ -78,7 +51,7 @@ function AppointmentList() {
                 <th>Time</th>
                 <th>Technician</th>
                 <th>Reason</th>
-                <th>update</th>
+                <th>Update</th>
                 </tr>
             </thead>
             <tbody>
@@ -86,7 +59,7 @@ function AppointmentList() {
                 return (
                     <tr key={appmt.id}>
                         <td>{appmt.vin}</td>
-                        <td>{autos.filter(auto => auto.vin === appmt.vin)[0] && autos.filter(auto => auto.vin === appmt.vin)[0].sold ? 'Yes' : 'No'} </td>
+                        <td>{autos.includes(appmt.vin) ? 'Yes' : 'No'} </td>
                         <td>{appmt.customer}</td>
                         <td>{new Date(appmt.date_time).toLocaleDateString()}</td>
                         <td>{new Date(appmt.date_time).toLocaleTimeString()}</td>
@@ -104,5 +77,4 @@ function AppointmentList() {
     </div>);
 }
 
-export default AppointmentList;
-
+export default ListAppointments;

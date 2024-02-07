@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function TechForm() {
+function AddTechnician() {
     const [success, setSuccess] = useState(false);
     const [tech, setTech] = useState({
         employee_id: '',
@@ -73,5 +73,5 @@ function TechForm() {
     );
 }
 
-export default TechForm;
+export default AddTechnician;
 
