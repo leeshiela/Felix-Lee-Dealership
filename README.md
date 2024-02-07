@@ -26,8 +26,8 @@ docker-compose up
 
 - View the project in the browser: http://localhost:3000/
 
-![Img](/resources/sales.png)
-![Img](/resources/services.png)
+![Sales sample image](/resources/Sales.png)
+![Service sample image](/resources/Services.png)
 
 ## Design
 CarCar is made up of 3 microservices which interact with one another.
@@ -36,7 +36,7 @@ CarCar is made up of 3 microservices which interact with one another.
 - **Inventory**
 - **Services**
 
-![Img](/resources/CarCar-DDD.png)
+![DD Diagram](/resources/CarCar-DDD.png)
 
 ## Accessing Endpoints to Send and View Data: Access Through Insomnia & Your Browser
 
@@ -83,24 +83,25 @@ On the backend, the services microservice has 3 models: AutomobileVO, Appointmen
 >     - VIN number: string primary key
 >     - sold: boolean
 
+A straightforward Value Object that tracks all the current Automobiles by vim and their sold status.
 
 > - Technician:
 >     - employee_id: integer primary key (auto_increment) 
 >     - first_name: string
 >     - last_name: string
 
-
+A special type of employee that works on assigned service appointments.
 
 > - Appointment:
 >	  - id: integer primary key (auto_increment)
 >     - costumer: string
 >     - reason: string
+>     - vin: string
 >     - status: enum(created, finished, canceled)
 >     - date_time: date_time encoded string
 >     - technician: Technician foreign key object
 
-
-
+The aggregate of this microservice. These represent all the important data to track for any and all service appointments at this dealership.
 
 #### Sales microservice
 Action | Method | URL
@@ -208,3 +209,83 @@ On the backend, the sales microservice has 4 models: AutomobileVO, Salesperson, 
 The AutomobileVO gets its data about the sold status and vin id in the inventory using a poller. The sales poller automotically polls the Inventory microservice for data, so the sales microservice is constantly getting the updated data. The reason for integration between the AutomobileVO and Sales models is that when recording a new sale, you'll need to choose which automobile vin was purchased and that information lives inside of the inventory microservice.
 
 The Salesperson model has attributes of an employee id, which we assigned to be the primary key, and the salesperson's first name and last name. The Customer model has its own id, first name, last name, address, and phone number properties.
+
+
+
+
+#### Service microservice
+Action | Method | URL
+| ------ | ------ | ------ |
+List manufacturers | GET | http://localhost:8100/api/manufacturers/
+Create a manufacturer | POST | http://localhost:8100/api/manufacturers/
+View a specific manufacturer | GET | http://localhost:8100/api/manufacturers/:id/
+Delete a specific manufacturer | DELETE | http://localhost:8100/api/manufacturers/:id/
+Update a specific manufacturer | PUT | http://localhost:8100/api/manufacturers/:id/
+List vehicles | GET | http://localhost:8100/api/models/
+Create a vehicle | POST | http://localhost:8100/api/models/
+View a specific vehicle | GET | http://localhost:8100/api/models/:id/
+Delete a specific vehicle | DELETE | http://localhost:8100/api/models/:id/
+Update a specific vehicle | PUT | http://localhost:8100/api/models/:id/
+List automobiles | GET | http://localhost:8100/api/automobiles/
+Create an automobile | POST | http://localhost:8100/api/automobiles/
+View a specific automobile | GET | http://localhost:8100/api/automobiles/:id/
+Delete a specific automobile | DELETE | http://localhost:8100/api/automobiles/:id/
+Update a specific automobile | PUT | http://localhost:8100/api/automobiles/:id/
+
+
+JSON Body to input into Insomnia:
+
+Create a Manufacturer:
+
+```
+{
+	"name": "BRAND"
+}
+```
+
+Create a Vehicle Model:
+
+```
+{
+	"name": "Rav4",
+	"picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg",
+	"manufacturer_id": 1
+}
+```
+
+Create an Automobile:
+
+```
+{
+	"color": "black",
+	"year": 2023,
+	"vin": "BV4VN13G6S5150447",
+	"model_id": 1,
+	"sold": true
+}
+```
+
+On the backend, the services microservice has 3 models: AutomobileVO, Appointment, and Technician.
+
+> - Manufacturer:
+>     - id: integer primary key (auto_increment) 
+>     - name: string
+
+This model represents vehicle manufacturer brands.
+
+> - VehicleModel:
+>     - id: integer primary key (auto_increment) 
+>     - name: string
+>     - picture_url: string
+>     - manufacturer: Manufacturer foreign key object
+
+This model represents all the different vehicle models registered in our system.
+
+> - Automobile:
+>     - id: integer primary key (auto_increment) 
+>     - color: string
+>     - year: integer
+>     - vin: string
+>     - model: VehicleModel foreign key object
+
+This is the aggregate model for this microservice. This model represents all individual automobiles to have been in our inventory at any given time by their unique VIN numbers.
