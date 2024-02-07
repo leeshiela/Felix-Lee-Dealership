@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function AddSale() {
+    const [success, setSuccess] = useState(false);
     const [automobiles, setAutomobiles] = useState([]);
     const [customers, setCustomers] = useState([]);
     const [salespeople, setSalespeople] = useState([]);
@@ -56,6 +57,7 @@ function AddSale() {
 
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
+            setSuccess(true);
             setFormData({
                 customer: "",
                 salesperson: "",
@@ -86,6 +88,13 @@ function AddSale() {
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">
                         <h1>Create a new sale</h1>
+                        {success ?
+                            <div className="alert alert-success d-flex align-items-center" role="alert">
+                                <div>
+                                Success: Created a new sale!
+                                </div>
+                            </div>:''
+                        }
                         <form onSubmit={handleSubmit} id="create-sale-form">
                             <div className="mb-3">
                                 <select onChange={handleFormChange} value={formData.customer} required name="customer" id="customer" className="form-select">

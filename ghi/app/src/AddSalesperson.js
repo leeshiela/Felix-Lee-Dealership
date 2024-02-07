@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function AddSalesperson() {
+    const [success, setSuccess] = useState(false);
     const [formData, setFormData] = useState({
         first_name: "",
         last_name: "",
@@ -21,6 +22,7 @@ function AddSalesperson() {
 
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
+            setSuccess(true);
             setFormData({
                 first_name: "",
                 last_name: "",
@@ -43,6 +45,13 @@ function AddSalesperson() {
                 <div className="offset-3 col-6">
                     <div className="shadow p-4 mt-4">
                         <h1>Add a Salesperson</h1>
+                        {success ?
+                            <div className="alert alert-success d-flex align-items-center" role="alert">
+                                <div>
+                                Success: Created a new salesperson!
+                                </div>
+                            </div>:''
+                        }
                         <form onSubmit={handleSubmit} id="add-salesperson-form">
 
                             <div className="form-floating mb-3">
