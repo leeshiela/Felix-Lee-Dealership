@@ -13,16 +13,6 @@ function ListManufacturers(){
         }
     }
 
-    const handleDelete = async (event) => {
-        const id = event.target.dataset.id
-
-        const fetchOptions = { method: "DELETE"}
-        const request = await fetch(`http://localhost:8100/api/manufacturers/${id}/`, fetchOptions)
-        if (request.ok) {
-            getData()
-        }
-    }
-
     useEffect(()=>{
         getData()
     }, []);
@@ -35,7 +25,6 @@ function ListManufacturers(){
                 <thead className="thead-dark">
                     <tr>
                         <th>Name</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,7 +32,6 @@ function ListManufacturers(){
                         return(
                             <tr key={manufacturer.id}>
                                 <td>{manufacturer.name}</td>
-                                <td><button data-id={manufacturer.id} onClick={handleDelete} className="btn btn-danger">Delete</button></td>
                             </tr>
                         );
                     })}
