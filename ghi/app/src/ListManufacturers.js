@@ -9,7 +9,7 @@ function ListManufacturers(){
             const { manufacturers } = await response.json();
             setManufacturers(manufacturers);
         } else {
-            console.error("Error occured while fetching salespeople data")
+            console.error("Error occured while fetching manufacturers data")
         }
     }
 
@@ -45,13 +45,13 @@ function ListManufacturers(){
                                 <td>{manufacturer.name}</td>
                                 <td><button data-id={manufacturer.id} onClick={handleDelete} className="btn btn-danger">Delete</button></td>
                             </tr>
-                        )
+                        );
                     })}
                 </tbody>
             </table>
             </div>
         </>
-    )
+    );
 }
 
 export default ListManufacturers;
