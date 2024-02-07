@@ -46,8 +46,8 @@ function AddTechnician() {
           <div className="shadow p-4 mt-4">
             <h1>Create a new Technician</h1>
             {success ? 
-            <div className="alert alert-success d-flex align-items-center" role="alert">
                 <div>
+                <div className="alert alert-success d-flex align-items-center" role="alert">
                 Success: created new technician with id {newTech.employee_id}
                 </div>
             </div>:''}
