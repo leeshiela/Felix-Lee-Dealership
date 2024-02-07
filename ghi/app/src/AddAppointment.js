@@ -38,7 +38,6 @@ function AddAppointment() {
         const response = await fetch(appmtUrl, fetchConfig);
         if (response.ok) {
             const newAppmt = await response.json();
-            console.log(newAppmt);
             setSuccess(true);
             setAppmt({
                 vin: '',
@@ -115,4 +114,3 @@ function AddAppointment() {
 }
 
 export default AddAppointment;
-
