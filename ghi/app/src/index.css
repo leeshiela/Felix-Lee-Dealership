@@ -27,6 +27,11 @@ code {
 #user {
   margin-bottom: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   gap: 20px;
+}
+
+.filter {
+  display: flex;
+  justify-content: left;
 }

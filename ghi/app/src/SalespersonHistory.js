@@ -28,7 +28,7 @@ function SalesHistory() {
     }, []);
 
     return (
-        <>
+    <>
         <div className="my-5 container">
             <h1>List of sales</h1>
             <select value={filterId} onChange={handleSalesperson}>
