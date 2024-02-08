@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#dealership-div {
+  display: flex;
+  max-width: 100px;
+  height: auto;
+}
+
+#logo {
+  height: auto;
+  width: 50px;
+}

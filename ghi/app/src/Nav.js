@@ -1,10 +1,15 @@
 import { NavLink } from 'react-router-dom';
+import felix_lee_black from "./static/img/felix_lee_black.png";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-black">
       <div className="container-fluid flex-wrap">
-        <NavLink className="navbar-brand" to="/">CarCar</NavLink>
+        <div id="logo">
+          <div>
+            <NavLink className="navbar-brand" to="/"><img src={felix_lee_black} alt="logo link"/></NavLink>
+          </div>
+        </div>
         <NavLink className="navbar-brand" to="/manufacturers/">Manufacturers</NavLink>
         <NavLink className="navbar-brand" to="/manufacturers/create/">Create a Manufacturer</NavLink>
         <NavLink className="navbar-brand" to="/models/">Models</NavLink>
