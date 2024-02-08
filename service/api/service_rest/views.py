@@ -61,24 +61,19 @@ def detail_technician(request, id):
         count, _ = Technician.objects.filter(employee_id=id).delete()
         return JsonResponse({"deleted": count > 0})
     except Technician.DoesNotExist:
-        response = JsonResponse({"message": "Does not exist"})
-        response.status_code = 404
-        return response
+        return JsonResponse({"message": "Technician does not exist"},
+                            status=404
+        )
 
 
 @require_http_methods(['GET', 'POST'])
 def list_appointments(request):
     if request.method == "GET":
-        try:
-            apps = Appointment.objects.all()
-            return JsonResponse(
+        apps = Appointment.objects.all()
+        return JsonResponse(
                 {"appointments": apps},
                 encoder=ListAppointmentEncoder,
-            )
-        except Technician.DoesNotExist:
-            response = JsonResponse({"message": "Does not exist"})
-            response.status_code = 404
-            return response
+        )
     else:
         content = json.loads(request.body)
         try:
@@ -104,16 +99,17 @@ def list_appointments(request):
 def detail_appointment(request, id, action=None):
     if request.method == 'PUT':
         allowed_status = {
-                'pending': 0,
+                'created': 0,
                 'finish': 1,
                 'cancel': 2
                 }
         try:
             app = Appointment.objects.get(id=id)
         except Appointment.DoesNotExist:
-            response = JsonResponse({"message": "Does not exist"})
-            response.status_code = 404
-            return response
+            return JsonResponse(
+                {"message": "Appointment does not exist"},
+                status=404,
+            )
 
         if action not in allowed_status:
             return JsonResponse(
@@ -129,6 +125,7 @@ def detail_appointment(request, id, action=None):
             count, _ = Appointment.objects.filter(id=id).delete()
             return JsonResponse({"deleted": count > 0})
         except Appointment.DoesNotExist:
-            response = JsonResponse({"message": "Does not exist"})
-            response.status_code = 404
-            return response
+            return JsonResponse(
+                {"message": "Appointment does not exist"},
+                status=404,
+            )

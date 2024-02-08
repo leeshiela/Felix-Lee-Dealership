@@ -53,15 +53,10 @@ class SaleListEncoder(ModelEncoder):
 @require_http_methods(["GET", "POST"])
 def api_salespeople_list(request):
     if request.method == "GET":
-        try:
-            salespeople = Salesperson.objects.all()
-            return JsonResponse(
-                {"salespeople": salespeople}, encoder=SalespeopleListEncoder
-            )
-        except Salesperson.DoesNotExist:
-            response = JsonResponse({"message": "Does not exist"})
-            response.status_code = 404
-            return response
+        salespeople = Salesperson.objects.all()
+        return JsonResponse(
+            {"salespeople": salespeople}, encoder=SalespeopleListEncoder
+        )
     else:
         content = json.loads(request.body)
         try:
@@ -82,7 +77,7 @@ def api_salesperson_delete(request, pk):
             count, _ = Salesperson.objects.filter(employee_id=pk).delete()
             return JsonResponse({"deleted": count > 0})
     except Salesperson.DoesNotExist:
-        return JsonResponse({"message": "Salesperson does not exist."})
+        return JsonResponse({"message": "Salesperson does not exist."}, status=404)
 
 
 @require_http_methods(["GET", "POST"])
