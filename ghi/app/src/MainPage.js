@@ -6,6 +6,7 @@ function MainPage() {
   const [autos, setAutos] = useState([]);
   const [manufacturers, setManufacturers] = useState([]);
   const [filterManufacturer, setFilterManufacturer] = useState(0);
+  const [filterManufacturerColor, setFilterManufacturerColor] = useState("");
 
   const fetchData = async () => {
     const manufacturersUrl = "http://localhost:8100/api/manufacturers/";
@@ -38,16 +39,29 @@ function MainPage() {
   }
 
   function filteredManufacturer(auto) {
-    if (auto.model.manufacturer.id === 0) {
+    if (filterManufacturer === 0) {
       return true;
     } else {
       return auto.model.manufacturer.id === filterManufacturer;
     }
   }
 
+  const handleManufacturerColor = (event) => {
+    const value = event.target.value;
+    setFilterManufacturerColor((value));
+  }
+
+  function filterColor(auto) {
+    if (filterManufacturerColor === "") {
+      return true;
+    } else {
+      return auto.color === filterManufacturerColor;
+    }
+  }
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [filterManufacturerColor]);
 
 
   return (
@@ -59,52 +73,87 @@ function MainPage() {
           <NavLink className="btn btn-info" to="/appointments/create" role="button">I need to service my car</NavLink>
         </div>
       </div>
-      <div className="filter mx-auto">
-        <p className="lead mb-4">
-          Filter automobiles by:
-        </p>
-      </div>
-        <p className=" filter lead mb-4">
-          Manufacturer
-        </p>
-      <div className="filter">
-          <select value={filterManufacturer} onChange={handleManufacturer}>
-              <option value={0}>Choose a Manufacturer</option>
-              {manufacturers.map(manufacturer => {
-                return (
-                  <option key={manufacturer.id} value={manufacturer.id}>{manufacturer.name}</option>
-                  );
-                })
-              }
-          </select>
+      <div id="filter-selections">
+        <div>
+          <p className="lead mb-4">
+            Filter automobiles by:
+          </p>
+        </div>
+        <div>
+            <select value={filterManufacturer} onChange={handleManufacturer}>
+                <option value={0}>Choose a Manufacturer</option>
+                {manufacturers.map(manufacturer => {
+                  return (
+                    <option key={manufacturer.id} value={manufacturer.id}>{manufacturer.name}</option>
+                    );
+                  })
+                }
+            </select>
+        </div>
+        <div>
+            <select value={filterManufacturerColor} onChange={handleManufacturerColor}>
+                <option value={""}>Choose a color</option>
+                      {autos.reduce((newArry, auto) => {
+                        if (!newArry.includes(auto.color)) {
+                          newArry.push(auto.color);
+                        }
+                          return newArry;
+                      }, []).map((color, index) => {
+                        return (
+                          <option key={index} value={color}>{color}</option>
+                          );
+                        })
+                      }
+            </select>
+        </div>
       </div>
 
       <div className="container">
         <div className="row">
-          {autos.filter((auto) => filteredManufacturer(auto)).map((auto) => {
-            return (
-              <div className="col">
-                <div key={auto.id} className="card mb-3 mt-3 shadow">
-                  <img src={auto.model.picture_url} className="card-img-top" />
-                  <div className="card-body">
-                    <h5 className="card-title">{auto.model.manufacturer.name} {auto.model.name}</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">
-                      {auto.model.vin}
-                    </h6>
+            { autos.filter((auto) => filteredManufacturer(auto) && filterColor(auto)).map((auto) => {
+              {if (autos.length > 3) {
+                return (
+                  <div key={auto.id} className="col-4">
+                    <div className="card mb-3 mt-3 shadow">
+                      <img src={auto.model.picture_url} className="card-img-top" />
+                        <div className="card-body">
+                          <h5 className="card-title">{auto.model.manufacturer.name} {auto.model.name}</h5>
+                          <h6 className="card-subtitle mb-2 text-muted">
+                            {auto.model.vin}
+                          </h6>
+                        </div>
+                        <div className="card-footer">
+                          <p>Color: {auto.color}</p>
+                          <p>Year: {auto.year}</p>
+                        </div>
+                    </div>
                   </div>
-                  <div className="card-footer">
-                    <p>Color: {auto.color}</p>
-                    <p>Year: {auto.year}</p>
+                )
+              } else {
+                return (
+                <div key={auto.id} className="col">
+                  <div className="card mb-3 mt-3 shadow">
+                    <img src={auto.model.picture_url} className="card-img-top" />
+                      <div className="card-body">
+                        <h5 className="card-title">{auto.model.manufacturer.name} {auto.model.name}</h5>
+                        <h6 className="card-subtitle mb-2 text-muted">
+                          {auto.model.vin}
+                        </h6>
+                      </div>
+                    <div className="card-footer">
+                      <p>Color: {auto.color}</p>
+                      <p>Year: {auto.year}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              );
+                );
+              }};
             })
           }
         </div>
       </div>
     </div>
   );
-        }
+}
 
 export default MainPage;

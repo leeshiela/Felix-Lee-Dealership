@@ -35,3 +35,9 @@ code {
   display: flex;
   justify-content: left;
 }
+
+#filter-selections {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
