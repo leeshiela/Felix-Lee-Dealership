@@ -41,3 +41,18 @@ code {
   flex-direction: row;
   gap: 20px;
 }
+
+footer {
+  background-color: black;
+  color: white;
+  padding: 50px;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.footer-class {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
