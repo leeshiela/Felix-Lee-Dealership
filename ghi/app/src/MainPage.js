@@ -7,6 +7,7 @@ function MainPage() {
   const [manufacturers, setManufacturers] = useState([]);
   const [filterManufacturer, setFilterManufacturer] = useState(0);
   const [filterManufacturerColor, setFilterManufacturerColor] = useState("");
+  const [filterYear, setFilterYear] = useState("");
 
   const fetchData = async () => {
     const manufacturersUrl = "http://localhost:8100/api/manufacturers/";
@@ -48,7 +49,7 @@ function MainPage() {
 
   const handleManufacturerColor = (event) => {
     const value = event.target.value;
-    setFilterManufacturerColor((value));
+    setFilterManufacturerColor(value);
   }
 
   function filterColor(auto) {
@@ -56,6 +57,19 @@ function MainPage() {
       return true;
     } else {
       return auto.color === filterManufacturerColor;
+    }
+  }
+
+  const handleYear = (event) => {
+    const value = event.target.value;
+    setFilterYear(Number(value));
+  }
+
+  function filterByYear(auto) {
+    if (filterYear === "") {
+      return true;
+    } else {
+      return auto.year === filterYear;
     }
   }
 
@@ -106,11 +120,27 @@ function MainPage() {
                       }
             </select>
         </div>
+        <div>
+            <select value={filterYear} onChange={handleYear}>
+                <option value={""}>Choose a year</option>
+                      {autos.reduce((newArry, auto) => {
+                        if (!newArry.includes(auto.year)) {
+                          newArry.push(auto.year);
+                        }
+                          return newArry;
+                      }, []).map((year, index) => {
+                        return (
+                          <option key={index} value={year}>{year}</option>
+                          );
+                        })
+                      }
+            </select>
+        </div>
       </div>
 
       <div className="container">
         <div className="row">
-            { autos.filter((auto) => filteredManufacturer(auto) && filterColor(auto)).map((auto) => {
+            { autos.filter((auto) => filteredManufacturer(auto) && filterColor(auto) && filterByYear(auto)).map((auto) => {
               {if (autos.length > 3) {
                 return (
                   <div key={auto.id} className="col-4">
