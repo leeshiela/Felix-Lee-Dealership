@@ -19,6 +19,7 @@ import ServiceHistory from './ServiceHistory';
 import ListAutomobiles from './ListAutomobiles';
 import ListModels from './ListModels';
 import AddAutoMobile from './AddAutoMobile';
+import Footer from './Footer';
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
           </Route>
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }
