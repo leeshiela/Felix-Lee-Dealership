@@ -33,9 +33,6 @@ function Nav() {
                   <ul className="dropdown-menu dropdown-menu-dark">
                     <li><NavLink className="dropdown-item" to="/salespeople/">Salespeople</NavLink></li>
                     <li><NavLink className="dropdown-item" to="/customers/">Customers</NavLink></li>
-                    <li><NavLink className="dropdown-item" to="/customers/create/">Add a Customer</NavLink></li>
-                    <li><NavLink className="dropdown-item" to="/sales/">Sales</NavLink></li>
-                    <li><NavLink className="dropdown-item" to="/sales/create/">Add a Sale</NavLink></li>
                     <li><NavLink className="dropdown-item" to="/sales/history/">Sales History</NavLink></li>
                   </ul>
                 </li>
@@ -45,9 +42,7 @@ function Nav() {
                   </a>
                   <ul className="dropdown-menu dropdown-menu-dark">
                     <li><NavLink className="dropdown-item" to="/technicians/">Technicians</NavLink></li>
-                    <li><NavLink className="dropdown-item" to="/technicians/create/">Add a Technician</NavLink></li>
                     <li><NavLink className="dropdown-item" to="/appointments/">Service Appointments</NavLink></li>
-                    <li><NavLink className="dropdown-item" to="/appointments/create/">Create a Service appointment</NavLink></li>
                     <li><NavLink className="dropdown-item" to="/appointments/history/">Service History</NavLink></li>
                   </ul>
                 </li>
