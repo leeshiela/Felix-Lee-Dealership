@@ -2,14 +2,13 @@ import felix_lee_black from "./static/img/felix_lee_black.png";
 
 function Footer() {
     return (
-        <footer>
+        <footer className="mt-auto">
         <div className="container">
           <div className="row footer-class">
             <div className="col text-center">About
                 <div className="col text-center">Careers</div>
                 <div className="col text-center">Locations</div>
                 <div className="col text-center">© 2023 by Elian Felix and Shiela Lee</div>
-
             </div>
             <div className="col text-center">Contact Us
                 <div className="col text-center">123 Alphabet Ave. New York, NY 10022</div>
