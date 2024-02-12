@@ -7,7 +7,7 @@ function MainPage() {
   const [manufacturers, setManufacturers] = useState([]);
   const [filterManufacturer, setFilterManufacturer] = useState(0);
   const [filterManufacturerColor, setFilterManufacturerColor] = useState("");
-  const [filterYear, setFilterYear] = useState("");
+  const [filterYear, setFilterYear] = useState(0);
 
   const fetchData = async () => {
     const manufacturersUrl = "http://localhost:8100/api/manufacturers/";
@@ -66,7 +66,7 @@ function MainPage() {
   }
 
   function filterByYear(auto) {
-    if (filterYear === "") {
+    if (filterYear === 0) {
       return true;
     } else {
       return auto.year === filterYear;
@@ -75,7 +75,7 @@ function MainPage() {
 
   useEffect(() => {
     fetchData();
-  }, [filterManufacturerColor]);
+  }, []);
 
 
   return (
@@ -84,7 +84,7 @@ function MainPage() {
       <h2 className="display-sm fw-bold">Car Showroom</h2>
       <div id="user">
         <div>
-          <NavLink className="btn btn-info" to="/appointments/create" role="button">I need to service my car</NavLink>
+          <NavLink className="btn btn-primary" to="/appointments/create" role="button">I need to service my car</NavLink>
         </div>
       </div>
       <div id="filter-selections">
