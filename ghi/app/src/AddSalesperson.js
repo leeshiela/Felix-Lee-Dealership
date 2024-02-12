@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddSalesperson() {
     const [success, setSuccess] = useState(false);
@@ -6,6 +7,7 @@ function AddSalesperson() {
         first_name: "",
         last_name: "",
     });
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -28,6 +30,8 @@ function AddSalesperson() {
                 last_name: "",
             });
         };
+
+        navigate("/salespeople/");
     }
 
     const handleFormChange = (event) => {
