@@ -7,7 +7,7 @@ function MainPage() {
   const [manufacturers, setManufacturers] = useState([]);
   const [filterManufacturer, setFilterManufacturer] = useState(0);
   const [filterManufacturerColor, setFilterManufacturerColor] = useState("");
-  const [filterYear, setFilterYear] = useState("");
+  const [filterYear, setFilterYear] = useState(0);
 
   const fetchData = async () => {
     const manufacturersUrl = "http://localhost:8100/api/manufacturers/";
@@ -66,7 +66,7 @@ function MainPage() {
   }
 
   function filterByYear(auto) {
-    if (filterYear === "") {
+    if (filterYear === 0) {
       return true;
     } else {
       return auto.year === filterYear;
