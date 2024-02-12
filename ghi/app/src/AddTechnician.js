@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function AddTechnician() {
     const [success, setSuccess] = useState(false);
@@ -7,6 +8,7 @@ function AddTechnician() {
         first_name: '',
         last_name: ''
     });
+    const navigate = useNavigate();
 
     const [newTech, setNewTech] = useState({});
     const handleFieldChange = (e) => {
@@ -38,6 +40,7 @@ function AddTechnician() {
              });
             setNewTech(newTech);
         }
+        navigate("/technicians/");
     }
 
     return (
@@ -45,7 +48,7 @@ function AddTechnician() {
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
             <h1>Create a new Technician</h1>
-            {success ? 
+            {success ?
                 <div>
                 <div className="alert alert-success d-flex align-items-center" role="alert">
                 Success: created new technician with id {newTech.employee_id}
@@ -73,4 +76,3 @@ function AddTechnician() {
 }
 
 export default AddTechnician;
-

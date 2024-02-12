@@ -75,7 +75,7 @@ function MainPage() {
 
   useEffect(() => {
     fetchData();
-  }, [filterManufacturerColor]);
+  }, []);
 
 
   return (
@@ -84,7 +84,7 @@ function MainPage() {
       <h2 className="display-sm fw-bold">Car Showroom</h2>
       <div id="user">
         <div>
-          <NavLink className="btn btn-info" to="/appointments/create" role="button">I need to service my car</NavLink>
+          <NavLink className="btn btn-primary" to="/appointments/create" role="button">I need to service my car</NavLink>
         </div>
       </div>
       <div id="filter-selections">

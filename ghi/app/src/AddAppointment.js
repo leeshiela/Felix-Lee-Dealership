@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function AddAppointment() {
     const [technicians, setTechnicians] = useState([]);
@@ -12,6 +13,7 @@ function AddAppointment() {
         reason: '',
         technician: ''
     });
+    const navigate = useNavigate();
 
     const [newAppmt, setNewAppmt] = useState({});
     const handleFieldChange = (e) => {
@@ -50,6 +52,7 @@ function AddAppointment() {
              });
             setNewAppmt(newAppmt);
         }
+        navigate("/appointments/")
     }
 
     const fetchData = async () => {
@@ -72,7 +75,7 @@ function AddAppointment() {
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
             <h1>Create a new Appointment</h1>
-            {success ? 
+            {success ?
             <div className="alert alert-success d-flex align-items-center" role="alert">
                 <div>
                 Success: created new appointment with id {newAppmt.id}

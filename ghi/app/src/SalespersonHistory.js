@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 function SalesHistory() {
     const [sales, setSales] = useState([]);
@@ -31,6 +32,7 @@ function SalesHistory() {
     <>
         <div className="my-5 container">
             <h1>List of sales</h1>
+            <NavLink className="button-right" to="/sales/create/"><button className="btn btn-primary">Add a sale</button></NavLink>
             <select value={filterId} onChange={handleSalesperson}>
                 <option value={0}>Choose a Salesperson</option>
                 {salespeople.map(salesperson => {

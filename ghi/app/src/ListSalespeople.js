@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 
 function ListSalespeople(){
     const [salespeople, setSalespeople] = useState([]);
@@ -21,6 +22,7 @@ function ListSalespeople(){
         <>
             <div className="my-5 container">
                 <h1>List of Salespeople</h1>
+                <NavLink className="button-right" to="/salespeople/create/"><button className="btn btn-primary">Add a salesperson</button></NavLink>
             <table className="table table-striped">
                 <thead className="thead-dark">
                     <tr>
