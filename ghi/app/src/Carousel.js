@@ -1,9 +1,6 @@
-
-
-
 function Carousel() {
     return (
-        <div id="carousel-Felix-Lee" class="carousel slide" data-bs-ride="carousel">
+        <div id="carousel-Felix-Lee" class="carousel slide" data-interval="3000" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img class="d-block w-100" src="https://www.freewebheaders.com/wp-content/gallery/cars/toyota-gt86-red-car-on-road-website-header.jpg" alt="Toyota"/>
