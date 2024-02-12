@@ -75,7 +75,7 @@ function MainPage() {
 
   useEffect(() => {
     fetchData();
-  }, [filterManufacturerColor]);
+  }, []);
 
 
   return (
