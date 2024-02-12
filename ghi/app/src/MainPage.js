@@ -141,15 +141,14 @@ function MainPage() {
       <div className="container">
         <div className="row">
             { autos.filter((auto) => filteredManufacturer(auto) && filterColor(auto) && filterByYear(auto)).map((auto) => {
-              {if (autos.length > 3) {
                 return (
-                  <div key={auto.id} className="col-4">
+                  <div key={auto.id} className={ autos.length > 3? "col-4": "col"}>
                     <div className="card mb-3 mt-3 shadow">
                       <img src={auto.model.picture_url} className="card-img-top" />
                         <div className="card-body">
                           <h5 className="card-title">{auto.model.manufacturer.name} {auto.model.name}</h5>
                           <h6 className="card-subtitle mb-2 text-muted">
-                            {auto.model.vin}
+                            {auto.vin}
                           </h6>
                         </div>
                         <div className="card-footer">
@@ -158,26 +157,7 @@ function MainPage() {
                         </div>
                     </div>
                   </div>
-                )
-              } else {
-                return (
-                <div key={auto.id} className="col">
-                  <div className="card mb-3 mt-3 shadow">
-                    <img src={auto.model.picture_url} className="card-img-top" />
-                      <div className="card-body">
-                        <h5 className="card-title">{auto.model.manufacturer.name} {auto.model.name}</h5>
-                        <h6 className="card-subtitle mb-2 text-muted">
-                          {auto.model.vin}
-                        </h6>
-                      </div>
-                    <div className="card-footer">
-                      <p>Color: {auto.color}</p>
-                      <p>Year: {auto.year}</p>
-                    </div>
-                  </div>
-                </div>
                 );
-              }};
             })
           }
         </div>
