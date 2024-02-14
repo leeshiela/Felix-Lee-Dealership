@@ -60,3 +60,25 @@ footer {
 .button-right {
   float: right;
 }
+
+
+.carousel-item {
+  height: 350px;
+
+}
+
+.carousel-item img {
+    display: block;
+    margin: auto;
+    min-height: 350px;
+    transform: translate(0, -30%);
+  }
+
+.carousel {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}

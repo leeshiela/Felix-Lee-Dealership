@@ -20,8 +20,10 @@ import ListAutomobiles from './ListAutomobiles';
 import ListModels from './ListModels';
 import AddAutoMobile from './AddAutoMobile';
 import Footer from './Footer';
+import Carousel from './Carousel';
 
 function App() {
+
   return (
     <BrowserRouter>
       <div className="d-flex flex-column min-vh-100">
