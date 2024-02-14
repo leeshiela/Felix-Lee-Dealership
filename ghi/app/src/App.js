@@ -27,7 +27,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="d-flex flex-column min-vh-100">
-        <Carousel props= />
           <Nav />
           <div className="container">
             <Routes>

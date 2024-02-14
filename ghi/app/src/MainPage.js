@@ -82,8 +82,6 @@ function MainPage() {
 
   const manufacturerImages = manufacturers.length === 0 ? imageUrls : manufacturers.map((manufacturer) => manufacturer.picture_url);
 
-  console.log("manufacturerImages,", manufacturerImages)
-
   return (
     <>
     <Carousel props={manufacturerImages} />

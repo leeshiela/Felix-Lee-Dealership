@@ -96,6 +96,8 @@ def api_manufacturers(request):
     else:
         try:
             content = json.loads(request.body)
+            photo = get_photo(content["name"])
+            content.update(photo)
             manufacturer = Manufacturer.objects.create(**content)
             return JsonResponse(
                 manufacturer,

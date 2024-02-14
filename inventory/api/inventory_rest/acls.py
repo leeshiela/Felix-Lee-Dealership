@@ -10,6 +10,6 @@ def get_photo(name):
 
     content = json.loads(response.content)
     try:
-        return content["photos"][0]["src"]["original"]
+        return content["photos"][0]["src"]["landscape"]
     except (KeyError, IndexError):
         return None
