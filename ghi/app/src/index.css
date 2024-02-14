@@ -82,3 +82,8 @@ footer {
   margin-left: -50vw;
   margin-right: -50vw;
 }
+
+#map {
+  height: 350px;
+  width: 100%;
+}

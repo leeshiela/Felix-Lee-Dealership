@@ -20,7 +20,7 @@ import ListAutomobiles from './ListAutomobiles';
 import ListModels from './ListModels';
 import AddAutoMobile from './AddAutoMobile';
 import Footer from './Footer';
-import Carousel from './Carousel';
+import GoogleMaps from './GoogleMaps'
 
 function App() {
 
@@ -67,6 +67,7 @@ function App() {
               </Route>
             </Routes>
           </div>
+          <GoogleMaps />
           <Footer />
       </div>
     </BrowserRouter>
