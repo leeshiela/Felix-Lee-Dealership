@@ -23,11 +23,12 @@ import Footer from './Footer';
 import Carousel from './Carousel';
 
 function App() {
+
   return (
     <BrowserRouter>
       <div className="d-flex flex-column min-vh-100">
+        <Carousel props= />
           <Nav />
-          <Carousel />
           <div className="container">
             <Routes>
               <Route path="/" element={<MainPage />} />

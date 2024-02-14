@@ -1,6 +1,7 @@
 import felix_lee_name from "./static/img/felix_lee_name.png";
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import Carousel from "./Carousel";
 
 function MainPage() {
   const [autos, setAutos] = useState([]);
@@ -77,8 +78,15 @@ function MainPage() {
     fetchData();
   }, []);
 
+  const imageUrls = ["https://www.freewebheaders.com/wp-content/gallery/cars/toyota-gt86-red-car-on-road-website-header.jpg", "https://www.freewebheaders.com/wp-content/gallery/cars/tesla-roadster-red-super-sports-car-website-header.jpg", "https://www.freewebheaders.com/wp-content/gallery/cars/blue-bmw-alpina-b6-xdrive-gran-coupe-car-web-header.jpg"]
+
+  const manufacturerImages = manufacturers.length === 0 ? imageUrls : manufacturers.map((manufacturer) => manufacturer.picture_url);
+
+  console.log("manufacturerImages,", manufacturerImages)
 
   return (
+    <>
+    <Carousel props={manufacturerImages} />
     <div className="px-4 py-5 my-5 text-center">
       <img id="dealership-name" src={felix_lee_name} alt="dealership name"/>
       <h2 className="display-sm fw-bold">Car Showroom</h2>
@@ -183,6 +191,7 @@ function MainPage() {
         </div>
       </div>
       </div>
+      </>
   );
 }
 

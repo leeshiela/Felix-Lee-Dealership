@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
+from .acls import get_photo
 
 from .encoders import (
     AutomobileEncoder,
@@ -107,6 +108,9 @@ def api_manufacturers(request):
             )
             response.status_code = 400
             return response
+
+
+
 
 
 @require_http_methods(["DELETE", "GET", "PUT"])
