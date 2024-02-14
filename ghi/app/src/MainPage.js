@@ -78,6 +78,7 @@ function MainPage() {
     fetchData();
   }, []);
 
+
   const imageUrls = ["https://www.freewebheaders.com/wp-content/gallery/cars/toyota-gt86-red-car-on-road-website-header.jpg", "https://www.freewebheaders.com/wp-content/gallery/cars/tesla-roadster-red-super-sports-car-website-header.jpg", "https://www.freewebheaders.com/wp-content/gallery/cars/blue-bmw-alpina-b6-xdrive-gran-coupe-car-web-header.jpg"]
 
   const manufacturerImages = manufacturers.length === 0 ? imageUrls : manufacturers.map((manufacturer) => manufacturer.picture_url);

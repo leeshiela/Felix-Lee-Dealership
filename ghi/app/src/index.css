@@ -61,17 +61,24 @@ footer {
   float: right;
 }
 
+
 .carousel-item {
-  height: 300px;
+  height: 350px;
+
 }
 
 .carousel-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-height: 300px;
+    display: block;
+    margin: auto;
+    min-height: 350px;
+    transform: translate(0, -30%);
   }
 
-.crop {
-  background-position: 50% 20%;
+.carousel {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }

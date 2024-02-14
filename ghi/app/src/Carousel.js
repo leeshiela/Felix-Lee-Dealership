@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 function Carousel({props}) {
 
   return (
@@ -6,7 +8,7 @@ function Carousel({props}) {
           {props.map((pictureUrl, i) => {
             return (
               <div key={i} className={i === 0 ? "carousel-item active": "carousel-item "}>
-                <img className="crop w-100" src={pictureUrl} alt="" />
+                <img className="w-100" src={pictureUrl} alt="" />
               </div>
             )
           }
