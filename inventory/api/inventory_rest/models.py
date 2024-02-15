@@ -4,6 +4,7 @@ from django.urls import reverse
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    picture_url = models.URLField(null=True)
 
     def get_api_url(self):
         return reverse("api_manufacturer", kwargs={"pk": self.id})

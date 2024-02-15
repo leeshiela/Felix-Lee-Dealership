@@ -8,6 +8,7 @@ class ManufacturerEncoder(ModelEncoder):
     properties = [
         "id",
         "name",
+        "picture_url",
     ]
 
 
