@@ -28,7 +28,8 @@ function MainPage() {
           return await response.json();
         })
         const autoDetails = await Promise.all(detailResponse);
-        setAutos(autoDetails);
+        const filteredForNotSold = autoDetails.filter(auto=>!auto.sold)
+        setAutos(filteredForNotSold);
       }
     } catch (e) {
       console.error(e);
@@ -134,7 +135,7 @@ function MainPage() {
                         if (!newArry.includes(auto.year)) {
                           newArry.push(auto.year);
                         }
-                          return newArry;
+                          return newArry.sort();
                       }, []).map((year, index) => {
                         return (
                           <option key={index} value={year}>{year}</option>
