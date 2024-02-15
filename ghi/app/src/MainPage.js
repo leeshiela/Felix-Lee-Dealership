@@ -104,7 +104,7 @@ function MainPage() {
         <div>
             <select value={filterManufacturer} onChange={handleManufacturer}>
                 <option value={0}>Choose a Manufacturer</option>
-                {(manufacturers.sort()).map(manufacturer => {
+                {(manufacturers.sort((a,b)=> a.name[0] < b.name[0] ? -1 : 1)).map(manufacturer => {
                   return (
                     <option key={manufacturer.id} value={manufacturer.id}>{manufacturer.name}</option>
                     );
