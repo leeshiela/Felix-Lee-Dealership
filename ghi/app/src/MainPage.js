@@ -1,6 +1,7 @@
 import felix_lee_name from "./static/img/felix_lee_name.png";
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import { PEXELS_API_KEY as pex_key } from './api_keys.js';
 
 function MainPage() {
   const [autos, setAutos] = useState([]);
@@ -82,10 +83,28 @@ function MainPage() {
     }
   }
 
-  function populateModal(car) {
+  async function populateModal(car) {
+    const pexUrl = `https://api.pexels.com/v1/search?query=${car.model.name}&per_page=7&orientation=landscape`;
+    const pexOptions = {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            authorization: pex_key
+        }
+    }
+
+    let pexPictures = [];
+    const pexResp = await fetch(pexUrl, pexOptions);
+    if (pexResp.ok) {
+      const data = await pexResp.json(); 
+      console.log(data);
+      pexPictures = data.photos.map(c => c.src.landscape);
+      console.log(pexPictures);
+    }
+
     setDetails({model: car.model.name,
                 vin: car.vin,
-                pictures: [car.model.picture_url],
+                pictures: [car.model.picture_url, ...pexPictures],
                 manufacturer: car.model.manufacturer.name,
                 year: car.year,
                 color: car.color});
@@ -116,11 +135,11 @@ function MainPage() {
                   </div>)})
                 }
                 </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <button className="carousel-control-prev" type="button" data-bs-target="#detailPictures" data-bs-slide="prev">
                   <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span className="visually-hidden">Previous</span>
                 </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <button className="carousel-control-next" type="button" data-bs-target="#detailPictures" data-bs-slide="next">
                   <span className="carousel-control-next-icon" aria-hidden="true"></span>
                   <span className="visually-hidden">Next</span>
                 </button>
