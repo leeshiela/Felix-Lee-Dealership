@@ -104,7 +104,7 @@ function AddAppointment() {
               </div>
               <div className="mb-3">
                 <select value={appmt.technician} onChange={handleFieldChange} name="technician" required id="technician" className="form-select">
-                  <option value="">Select a technician for this hat</option>
+                  <option value="">Select a technician for this appointment</option>
                   {technicians.map(technician => <option key={technician.employee_id} value={technician.employee_id}> {`${technician.first_name} ${technician.last_name}`} </option>)}
                 </select>
               </div>
