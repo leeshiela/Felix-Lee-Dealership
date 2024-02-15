@@ -24,6 +24,10 @@ docker-compose up
 ```
 - After running these commands, make sure all of your Docker containers are running
 
+- Make two API key files to grab pictures from the Pexels API and input your unique API identifier.
+Location 1 for API key file: inventory/api/inventory_rest/keys.py
+Location 2 for API key file: ghi/app/src/api_keys.js
+
 - View the project in the browser: http://localhost:3000/
 
 ![landing page image](/resources/landing-page.png)
