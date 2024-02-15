@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { NavLink } from "react-router-dom";
 
 function ListModels() {
     const [models, setModels] = useState([]);
@@ -21,6 +22,7 @@ function ListModels() {
     return (
     <div className="my-5">
         <h1>List of Models</h1>
+        <NavLink className="button-right" to="/models/create/"><button className="btn btn-primary">Add a model</button></NavLink>
         <table className="table table-striped">
             <thead>
                 <tr>
