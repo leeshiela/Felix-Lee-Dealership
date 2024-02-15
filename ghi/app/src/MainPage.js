@@ -38,7 +38,8 @@ function MainPage() {
           return await response.json();
         })
         const autoDetails = await Promise.all(detailResponse);
-        setAutos(autoDetails);
+        const filteredForNotSold = autoDetails.filter(auto=>!auto.sold)
+        setAutos(filteredForNotSold);
       }
     } catch (e) {
       console.error(e);
@@ -210,7 +211,7 @@ function MainPage() {
         <div>
             <select value={filterManufacturer} onChange={handleManufacturer}>
                 <option value={0}>Choose a Manufacturer</option>
-                {manufacturers.map(manufacturer => {
+                {(manufacturers.sort((a,b)=> a.name[0] < b.name[0] ? -1 : 1)).map(manufacturer => {
                   return (
                     <option key={manufacturer.id} value={manufacturer.id}>{manufacturer.name}</option>
                     );
@@ -225,7 +226,7 @@ function MainPage() {
                         if (!newArry.includes(auto.color)) {
                           newArry.push(auto.color);
                         }
-                          return newArry;
+                          return newArry.sort();
                       }, []).map((color, index) => {
                         return (
                           <option key={index} value={color}>{color}</option>
@@ -241,7 +242,7 @@ function MainPage() {
                         if (!newArry.includes(auto.year)) {
                           newArry.push(auto.year);
                         }
-                          return newArry;
+                          return newArry.sort();
                       }, []).map((year, index) => {
                         return (
                           <option key={index} value={year}>{year}</option>

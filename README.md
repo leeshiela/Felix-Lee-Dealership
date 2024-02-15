@@ -26,8 +26,9 @@ docker-compose up
 
 - View the project in the browser: http://localhost:3000/
 
-![Sales sample image](/resources/Sales.png)
-![Service sample image](/resources/Services.png)
+![landing page image](/resources/landing-page.png)
+![filtering image](/resources/filtering.png)
+![footer image](/resources/footer.png)
 
 ## Design
 Felix Lee is made up of 3 microservices which interact with one another.
