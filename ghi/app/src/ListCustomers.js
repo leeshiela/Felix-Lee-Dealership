@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 function ListCustomers(){
     const [customers, setCustomers] = useState([]);
@@ -21,6 +22,7 @@ function ListCustomers(){
         <>
             <div className="my-5 container">
                 <h1>List of Customers</h1>
+                <NavLink className="button-right" to="/manufacturers/create/"><button className="btn btn-primary">Add a manufacturer</button></NavLink>
             <table className="table table-striped">
                 <thead className="thead-dark">
                     <tr>

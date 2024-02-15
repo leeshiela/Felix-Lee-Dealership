@@ -1,6 +1,6 @@
-# CarCar
+# Felix Lee
 
-CarCar is an application for managing all aspects of selling and servicing cars at your dealership. You can track your salespeople, customers, types of cars in inventory, technicians, service appointments, and much more! From when a car arrives in inventory to the actual sale, fine tune your database of cars, personnel, and appointments.
+Felix Lee is an application for managing all aspects of selling and servicing cars at your dealership. You can track your salespeople, customers, types of cars in inventory, technicians, service appointments, and much more! From when a car arrives in inventory to the actual sale, fine tune your database of cars, personnel, and appointments.
 
 Team:
 
@@ -24,13 +24,18 @@ docker-compose up
 ```
 - After running these commands, make sure all of your Docker containers are running
 
+- Make two API key files to grab pictures from the Pexels API and input your unique API identifier.
+Location 1 for API key file: inventory/api/inventory_rest/keys.py
+Location 2 for API key file: ghi/app/src/api_keys.js
+
 - View the project in the browser: http://localhost:3000/
 
-![Sales sample image](/resources/Sales.png)
-![Service sample image](/resources/Services.png)
+![landing page image](/resources/landing-page.png)
+![filtering image](/resources/filtering.png)
+![footer image](/resources/footer.png)
 
 ## Design
-CarCar is made up of 3 microservices which interact with one another.
+Felix Lee is made up of 3 microservices which interact with one another.
 
 - **Sales**
 - **Inventory**
@@ -86,7 +91,7 @@ On the backend, the services microservice has 3 models: AutomobileVO, Appointmen
 A straightforward Value Object that tracks all the current Automobiles by vim and their sold status.
 
 > - Technician:
->     - employee_id: integer primary key (auto_increment) 
+>     - employee_id: integer primary key (auto_increment)
 >     - first_name: string
 >     - last_name: string
 
@@ -268,13 +273,13 @@ Create an Automobile:
 On the backend, the Inventory microservice has 3 models: Manufacturer, VehicleModel, and Automobile.
 
 > - Manufacturer:
->     - id: integer primary key (auto_increment) 
+>     - id: integer primary key (auto_increment)
 >     - name: string
 
 This model represents vehicle manufacturer brands.
 
 > - VehicleModel:
->     - id: integer primary key (auto_increment) 
+>     - id: integer primary key (auto_increment)
 >     - name: string
 >     - picture_url: string
 >     - manufacturer: Manufacturer foreign key object
@@ -282,7 +287,7 @@ This model represents vehicle manufacturer brands.
 This model represents all the different vehicle models registered in our system.
 
 > - Automobile:
->     - id: integer primary key (auto_increment) 
+>     - id: integer primary key (auto_increment)
 >     - color: string
 >     - year: integer
 >     - vin: string

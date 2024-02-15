@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddSale() {
     const [success, setSuccess] = useState(false);
     const [automobiles, setAutomobiles] = useState([]);
     const [customers, setCustomers] = useState([]);
     const [salespeople, setSalespeople] = useState([]);
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         customer: "",
@@ -65,6 +67,8 @@ function AddSale() {
                 price: "",
             })
         }
+
+        navigate("/sales/");
     }
 
     const handleFormChange = (event) => {

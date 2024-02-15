@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddVehicleModel() {
     const [success, setSuccess] = useState(false);
@@ -8,6 +9,7 @@ function AddVehicleModel() {
         picture_url: "",
         manufacturer_id: "",
     });
+    const navigate = useNavigate();
 
     const getData = async () => {
         const manufacturersUrl = "http://localhost:8100/api/manufacturers/";
@@ -44,6 +46,7 @@ function AddVehicleModel() {
                 manufacturer: "",
             });
         };
+        navigate("/models/");
     }
 
     const handleFormChange = (event) => {

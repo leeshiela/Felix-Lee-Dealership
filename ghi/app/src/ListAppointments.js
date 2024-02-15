@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { NavLink } from 'react-router-dom';
 
 function ListAppointments() {
     const [appmts, setAppmts] = useState([]);
@@ -39,6 +40,7 @@ function ListAppointments() {
     return (
     <div className="my-5">
         <h1>List of Appointments</h1>
+        <NavLink className="button-right" to="/appointments/create/"><button className="btn btn-primary">Create a service appointment</button></NavLink>
         <table className="table table-striped">
             <thead>
                 <tr>

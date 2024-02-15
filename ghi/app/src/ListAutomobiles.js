@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 function ListAutomobiles() {
     const [automobiles, setAutomobiles] = useState([]);
@@ -19,6 +20,7 @@ function ListAutomobiles() {
     return(
         <div className="my-5 container">
             <h1>List of Automobiles</h1>
+            <NavLink className="button-right" to="/automobiles/create/"><button className="btn btn-primary">Add an automobile</button></NavLink>
         <table className="table table-striped">
             <thead className="thead-dark">
                 <tr>

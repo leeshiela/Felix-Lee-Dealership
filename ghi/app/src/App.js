@@ -20,51 +20,55 @@ import ListAutomobiles from './ListAutomobiles';
 import ListModels from './ListModels';
 import AddAutoMobile from './AddAutoMobile';
 import Footer from './Footer';
+import GoogleMaps from './GoogleMaps'
 
 function App() {
+
   return (
     <BrowserRouter>
-      <Nav />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="manufacturers" >
-            <Route path="" element={<ListManufacturers />} />
-            <Route path="create" element={<AddManufacturer />} />
-          </Route>
-          <Route path="models" >
-            <Route path="" element={<ListModels />} />
-            <Route path="create" element={<AddVehicleModel />} />
-          </Route>
-          <Route path="automobiles" >
-            <Route path="" element={<ListAutomobiles />} />
-            <Route path="create" element={<AddAutoMobile />} />
-          </Route>
-          <Route path="salespeople" >
-            <Route path="" element={<ListSalespeople />} />
-            <Route path="create" element={<AddSalesperson />} />
-          </Route>
-          <Route path="sales" >
-            <Route path="" element={<ListSales />} />
-            <Route path="create" element={<AddSale />} />
-            <Route path="history" element={<SalesHistory />} />
-          </Route>
-          <Route path="customers" >
-            <Route path="" element={<ListCustomers />} />
-            <Route path="create" element={<AddCustomer />} />
-          </Route>
-          <Route path="technicians" >
-            <Route path="" element={<ListTechnicians />} />
-            <Route path="create" element={<AddTechnician />} />
-          </Route>
-          <Route path="appointments" >
-            <Route path="" element={<ListAppointments />} />
-            <Route path="create" element={<AddAppointment />} />
-            <Route path="history" element={<ServiceHistory />} />
-          </Route>
-        </Routes>
+      <div className="d-flex flex-column min-vh-100">
+          <Nav />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="manufacturers" >
+                <Route path="" element={<ListManufacturers />} />
+                <Route path="create" element={<AddManufacturer />} />
+              </Route>
+              <Route path="models" >
+                <Route path="" element={<ListModels />} />
+                <Route path="create" element={<AddVehicleModel />} />
+              </Route>
+              <Route path="automobiles" >
+                <Route path="" element={<ListAutomobiles />} />
+                <Route path="create" element={<AddAutoMobile />} />
+              </Route>
+              <Route path="salespeople" >
+                <Route path="" element={<ListSalespeople />} />
+                <Route path="create" element={<AddSalesperson />} />
+              </Route>
+              <Route path="sales" >
+                <Route path="" element={<ListSales />} />
+                <Route path="create" element={<AddSale />} />
+                <Route path="history" element={<SalesHistory />} />
+              </Route>
+              <Route path="customers" >
+                <Route path="" element={<ListCustomers />} />
+                <Route path="create" element={<AddCustomer />} />
+              </Route>
+              <Route path="technicians" >
+                <Route path="" element={<ListTechnicians />} />
+                <Route path="create" element={<AddTechnician />} />
+              </Route>
+              <Route path="appointments" >
+                <Route path="" element={<ListAppointments />} />
+                <Route path="create" element={<AddAppointment />} />
+                <Route path="history" element={<ServiceHistory />} />
+              </Route>
+            </Routes>
+          </div>
+        <Footer />
       </div>
-      <Footer />
     </BrowserRouter>
   );
 }
