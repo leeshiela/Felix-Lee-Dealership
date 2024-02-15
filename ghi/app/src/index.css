@@ -74,19 +74,19 @@ footer {
     overflow: clip;
 }
 
-.carousel-item {
+.main-carousel {
   height: 350px;
 
 }
 
-.carousel-item img {
+.main-carousel img {
     display: block;
     margin: auto;
     min-height: 350px;
     transform: translate(0, -30%);
   }
 
-.carousel {
+#carousel-Felix-Lee {
   width: 100vw;
   position: relative;
   left: 50%;

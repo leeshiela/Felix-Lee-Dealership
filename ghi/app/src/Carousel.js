@@ -7,7 +7,7 @@ function Carousel({props}) {
       <div className="carousel-inner">
           {props.map((pictureUrl, i) => {
             return (
-              <div key={i} className={i === 0 ? "carousel-item active": "carousel-item "}>
+              <div key={i} className={i === 0 ? "carousel-item active main-carousel": "carousel-item main-carousel"}>
                 <img className="w-100" src={pictureUrl} alt="" />
               </div>
             )
