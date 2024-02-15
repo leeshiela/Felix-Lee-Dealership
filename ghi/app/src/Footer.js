@@ -1,3 +1,4 @@
+import GoogleMaps from "./GoogleMaps";
 import felix_lee_black from "./static/img/felix_lee_black.png";
 
 function Footer() {
@@ -14,6 +15,9 @@ function Footer() {
                     <div className="col text-center">123 Alphabet Ave. New York, NY 10022</div>
                     <div className="col text-center">New York, NY 10022</div>
                     <div className="col text-center">(303)123-4567</div>
+                </div>
+                <div className="col text-center">
+                    <GoogleMaps />
                 </div>
                 <div className="col-3">
                     <img src={felix_lee_black} id="logo" alt="logo" />

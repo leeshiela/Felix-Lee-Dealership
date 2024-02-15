@@ -104,7 +104,7 @@ function MainPage() {
         <div>
             <select value={filterManufacturer} onChange={handleManufacturer}>
                 <option value={0}>Choose a Manufacturer</option>
-                {manufacturers.map(manufacturer => {
+                {(manufacturers.sort()).map(manufacturer => {
                   return (
                     <option key={manufacturer.id} value={manufacturer.id}>{manufacturer.name}</option>
                     );
@@ -119,7 +119,7 @@ function MainPage() {
                         if (!newArry.includes(auto.color)) {
                           newArry.push(auto.color);
                         }
-                          return newArry;
+                          return newArry.sort();
                       }, []).map((color, index) => {
                         return (
                           <option key={index} value={color}>{color}</option>

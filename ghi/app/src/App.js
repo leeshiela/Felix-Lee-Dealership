@@ -67,7 +67,6 @@ function App() {
               </Route>
             </Routes>
           </div>
-          <GoogleMaps />
           <Footer />
       </div>
     </BrowserRouter>
