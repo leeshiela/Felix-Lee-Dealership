@@ -1,6 +1,7 @@
 import felix_lee_name from "./static/img/felix_lee_name.png";
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import { PEXELS_API_KEY as pex_key } from './api_keys.js';
 import Carousel from "./Carousel";
 
 function MainPage() {
@@ -9,6 +10,15 @@ function MainPage() {
   const [filterManufacturer, setFilterManufacturer] = useState(0);
   const [filterManufacturerColor, setFilterManufacturerColor] = useState("");
   const [filterYear, setFilterYear] = useState(0);
+  const [openDetail, setOpenDetail] = useState(false);
+  const [details, setDetails] = useState({
+                                    model: 'Rav4',
+                                    vin: 'JT4VN13G6S5150447',
+                                    pictures: ["https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg"],
+                                    manufacturer: 'Toyota',
+                                    year: 2023,
+                                    color: 'Black',
+                                    });
 
   const fetchData = async () => {
     const manufacturersUrl = "http://localhost:8100/api/manufacturers/";
@@ -74,6 +84,34 @@ function MainPage() {
     }
   }
 
+  async function populateModal(car) {
+    const pexUrl = `https://api.pexels.com/v1/search?query=${car.model.name}&per_page=7&orientation=landscape`;
+    const pexOptions = {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            authorization: pex_key
+        }
+    }
+
+    let pexPictures = [];
+    const pexResp = await fetch(pexUrl, pexOptions);
+    if (pexResp.ok) {
+      const data = await pexResp.json(); 
+      console.log(data);
+      pexPictures = data.photos.map(c => c.src.landscape);
+      console.log(pexPictures);
+    }
+
+    setDetails({model: car.model.name,
+                vin: car.vin,
+                pictures: [car.model.picture_url, ...pexPictures],
+                manufacturer: car.model.manufacturer.name,
+                year: car.year,
+                color: car.color});
+    setOpenDetail(true);
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -87,6 +125,75 @@ function MainPage() {
     <>
     <Carousel props={manufacturerImages} />
     <div className="px-4 py-5 my-5 text-center">
+      {openDetail ?
+      <div>
+        <div className="modal fade show" id="exampleModalLive" tabIndex="-1" aria-labelledby="exampleModalLiveLabel" style={{display: "block"}} aria-modal="true" role="dialog">
+          <div className="modal-dialog modal-xl modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="modal-title fs-5" id="exampleModalLiveLabel">{`${details.manufacturer} ${details.model} - ${details.year}`}</h1>
+                <button type="button" className="btn-close" onClick={() => setOpenDetail(false)} data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div id="detailPictures" className="carousel slide">
+                <div className="carousel-inner">
+                {details.pictures.map((pic, i) => { return(
+                  <div className={i === 0 ? "carousel-item active": "carousel-item"} key={i}>
+                    <img src={pic} className="d-block w-100" alt="..."/>
+                  </div>)})
+                }
+                </div>
+                <button className="carousel-control-prev" type="button" data-bs-target="#detailPictures" data-bs-slide="prev">
+                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span className="visually-hidden">Previous</span>
+                </button>
+                <button className="carousel-control-next" type="button" data-bs-target="#detailPictures" data-bs-slide="next">
+                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span className="visually-hidden">Next</span>
+                </button>
+              </div>
+              <div className="modal-body mx-2">
+                <h5 className="text-start mt-2">Details</h5>
+                <div className="card bg-light mx-5 px-4">
+                  <div className="card-body">
+                    <table className="table table-borderless table-striped-columns table-sm mb-1">
+                      <tbody className="px-4">
+                        <tr>
+                          <td className="text-end"><b>Year</b></td><td className="text-start">{details.year}</td>
+                          <td className="text-end"><b>Make</b></td><td className="text-start">{details.manufacturer}</td>
+                        </tr>
+                        <tr>
+                          <td className="text-end"><b>Model</b></td><td className="text-start">{details.model}</td>
+                          <td className="text-end"><b>VIN</b></td><td className="text-start">{details.vin}</td>
+                        </tr>
+                        <tr>
+                          <td className="text-end"><b>Color</b></td><td className="text-start">{details.color}</td>
+                          <td className="text-end"><b>Body</b></td><td className="text-start">Sedan</td>
+                        </tr>
+                        <tr>
+                          <td className="text-end"><b>Mileage</b></td><td className="text-start">100,000 Miles</td>
+                          <td className="text-end"><b>Condition</b></td><td className="text-start">Mint</td>
+                        </tr>
+                        <tr>
+                          <td className="text-end"><b>Transmission</b></td><td className="text-start">Automatic</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <h5 className="text-start mt-4">Description</h5>
+                <p className="text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                A diam sollicitudin tempor id eu nisl nunc mi. Curabitur vitae nunc sed velit dignissim. Diam ut venenatis tellus in metus
+                vulputate. Platea dictumst quisque sagittis purus sit amet volutpat.</p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" onClick={() => setOpenDetail(false)} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary">Confirm Availability</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="modal-backdrop fade show"></div>
+      </div> : <div></div>}
       <img id="dealership-name" src={felix_lee_name} alt="dealership name"/>
       <h2 className="display-sm fw-bold">Car Showroom</h2>
       <div id="user">
@@ -150,8 +257,9 @@ function MainPage() {
             { autos.filter((auto) => filteredManufacturer(auto) && filterColor(auto) && filterByYear(auto)).map((auto) => {
                 return (
                   <div key={auto.id} className={ autos.length > 3? "col-4": "col"}>
-                    <div className="card mb-3 mt-3 shadow">
-                      <img src={auto.model.picture_url} className="card-img-top" />
+                    <button className="bare-button my-3" onClick={() => populateModal(auto)}>
+                    <div className="card shadow">
+                      <img src={auto.model.picture_url} className="card-img-top" alt={auto.color} />
                         <div className="card-body">
                           <h5 className="card-title">{auto.model.manufacturer.name} {auto.model.name}</h5>
                           <h6 className="card-subtitle mb-2 text-muted">
@@ -163,12 +271,14 @@ function MainPage() {
                           <p>Year: {auto.year}</p>
                         </div>
                     </div>
+                    </button>
                   </div>
                 );
             })
           }
         </div>
       </div>
+
       </div>
       </>
   );

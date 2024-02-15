@@ -61,6 +61,18 @@ footer {
   float: right;
 }
 
+.bare-button {
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    z-index: 2;
+}
+
+#detailPictures {
+    max-height: 500px;
+    overflow: clip;
+}
 
 .carousel-item {
   height: 350px;
