@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 function AddAutoMobile() {
     const [models, setModels] = useState([]);
@@ -10,6 +11,7 @@ function AddAutoMobile() {
         vin: '',
         model_id: ''
     });
+    const navigate = useNavigate();
 
     const [newAuto, setNewAuto] = useState({});
     const handleFieldChange = (e) => {
@@ -41,6 +43,7 @@ function AddAutoMobile() {
              });
             setNewAuto(newAuto);
         }
+        navigate("/automobiles/");
     }
 
     const fetchData = async () => {
