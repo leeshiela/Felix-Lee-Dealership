@@ -15,7 +15,7 @@ Team:
 1. Fork this repository.
 
 2. Clone the forked repository onto your local computer:
-git clone <https://gitlab.com/leeshiela12/project-beta-elian-shiela>
+git clone <https://github.com/leeshiela/Felix-Lee-Dealership>
 
 3. Build and run the project using Docker with these commands:
 ```
